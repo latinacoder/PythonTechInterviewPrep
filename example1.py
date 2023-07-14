@@ -9,10 +9,15 @@
         #Step 5: If not, return False. 
 
 
-
 def has_pythagorean_triplets(nums):
-    squares = set() #create an empty set to store the squares of numbers
-
-    for num in nums: #iterate through the list of numbers
-        squares.add(num * num) #Calculate the square of each number and add it to the set
-
+    squares = set()  # Create an empty set to store the squares of numbers
+    
+    for num in nums:  # Iterate through the list of numbers
+        squares.add(num * num)  # Calculate the square of each number and add it to the set
+    
+    for i in range(len(nums)):  # Iterate through the list again
+        for j in range(i+1, len(nums)):  # Iterate through the list starting from the next number
+            if (nums[i] * nums[i] + nums[j] * nums[j]) in squares:  # Check if the sum of squares exists in the set
+                return True  # Return True if a Pythagorean Triplet is found
+    
+    return False  # Return False if no Pythagorean Triplet is found
